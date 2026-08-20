@@ -1,0 +1,61 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+    paths-ignore:
+      - storymap-export.zip
+      - README.md
+      - .gitignore
+      - scripts/**
+      - .github/workflows/import-zip.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Assemble publish folder
+        run: |
+          mkdir _site
+          # Published reader only — keep template tooling off the live site.
+          for path in index.html story.json css js images maps fonts README.txt; do
+            if [ -e "$path" ]; then
+              cp -R "$path" "_site/$path"
+            fi
+          done
+          if [ ! -f _site/index.html ]; then
+            echo "No index.html to publish."
+            exit 1
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
