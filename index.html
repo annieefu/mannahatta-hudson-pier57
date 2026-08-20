@@ -1,85 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Storymap — waiting for export</title>
-  <style>
-    :root {
-      --bg: #f4f1ea;
-      --ink: #1b1b1b;
-      --muted: #555;
-      --accent: #2f5d3a;
-      --card: #fff;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 2rem;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
-    }
-    main {
-      width: min(36rem, 100%);
-      padding: 2rem 1.75rem;
-      background: var(--card);
-      border: 1px solid #e8e4da;
-    }
-    h1 {
-      margin: 0 0 0.75rem;
-      font-size: clamp(1.6rem, 4vw, 2rem);
-      letter-spacing: -0.02em;
-    }
-    p {
-      margin: 0 0 0.9rem;
-      font-family: system-ui, sans-serif;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-    ol {
-      margin: 0;
-      padding-left: 1.2rem;
-      font-family: system-ui, sans-serif;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-    li + li { margin-top: 0.45rem; }
-    code {
-      font-family: ui-monospace, monospace;
-      font-size: 0.85em;
-      color: var(--accent);
-    }
-    .brand {
-      margin: 0 0 1.25rem;
-      font-family: system-ui, sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mannahatta along the Hudson</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;600&display=swap"/>
+<link rel="stylesheet" href="css/reader.css"/>
 </head>
 <body>
-  <main>
-    <p class="brand">NYBG Storymap</p>
-    <h1>This site is ready for an export</h1>
-    <p>
-      Upload a Storymap Engine zip as <code>storymap-export.zip</code>, then commit.
-      GitHub Actions will unpack it and publish this Pages site.
-    </p>
-    <ol>
-      <li>Export the story from Storymap Engine.</li>
-      <li>Rename the download to <code>storymap-export.zip</code>.</li>
-      <li>In this repo: <strong>Add file → Upload files</strong>.</li>
-      <li>Wait for the Actions workflows to finish.</li>
-    </ol>
-  </main>
+<div id="app"></div>
+<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/shpjs@4.0.4/dist/shp.js"></script>
+<script src="js/reader.js"></script>
 </body>
 </html>

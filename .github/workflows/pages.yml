@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir _site
           # Published reader only — keep template tooling off the live site.
-          for path in index.html story.json css js images maps fonts README.txt; do
+          for path in index.html story.json assets-cdn.json css js images maps fonts README.txt; do
             if [ -e "$path" ]; then
               cp -R "$path" "_site/$path"
             fi
