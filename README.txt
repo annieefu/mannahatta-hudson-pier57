@@ -17,8 +17,8 @@ Contents:
   images/ in this zip.
 
 If this zip is larger than 25 MB:
-Put large assets on the storymap-assets S3 bucket under images/ or maps/
-(same relative paths as in the story). Confirm the CloudFront base in
-the Export dialog before downloading.
+Put large assets on the storymap-assets S3 bucket under
+<story-slug>/images/ or maps/ (same relative paths as in the
+story). Set CDN base + story slug in the Export dialog before downloading.
 
 MapLibre, pmtiles, and shpjs load from CDN.
